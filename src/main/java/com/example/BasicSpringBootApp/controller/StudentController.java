@@ -22,6 +22,7 @@ public class StudentController {
 	@Autowired
 	StudentRepo studentRepo;
 	
+	//post mapping will add a new data in the table
 	@PostMapping("/api/students")
 	public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
 		return new ResponseEntity<>(studentRepo.save(student), HttpStatus.CREATED);
