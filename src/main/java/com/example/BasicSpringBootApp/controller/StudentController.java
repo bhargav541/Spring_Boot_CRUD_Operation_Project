@@ -28,11 +28,13 @@ public class StudentController {
 		return new ResponseEntity<>(studentRepo.save(student), HttpStatus.CREATED);
 	}
 	
+	//get mapping will fetch all the data
 	@GetMapping("/api/students")
 	public ResponseEntity<List<Student>> getStudent() {
 		return new ResponseEntity<>(studentRepo.findAll(), HttpStatus.OK);
 	}
 	
+	//get mapping with path param will fetch the specific id's data 
 	@GetMapping("/api/students/{id}")
 	public ResponseEntity<Student> getSingleStudent(@PathVariable Long id) {
 		Optional<Student> student = studentRepo.findById(id);
@@ -44,6 +46,7 @@ public class StudentController {
 		}
 	}
 	
+	//put mapping will update the specific id's data
 	@PutMapping("/api/students/{id}")
 	public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student stud) {
 		Optional<Student> student = studentRepo.findById(id);
@@ -58,6 +61,7 @@ public class StudentController {
 		}
 	}
 	
+	//delete mapping will delete the data of specific id's
 	@DeleteMapping("/api/students/{id}")
 	public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
 		Optional<Student> student = studentRepo.findById(id);
